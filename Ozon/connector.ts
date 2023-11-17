@@ -223,7 +223,29 @@ namespace Ozon_ {
             });
             return response;
         }
-
+        /**
+         * @description Возвращает список отправлений за указанный период времени. Дополнительно можно отфильтровать отправления по их статусу.
+         *
+         * @tags FBO
+         * @name PostingApiGetFboPostingList
+         * @summary Список отправлений
+         * @request POST:/v2/posting/fbo/list
+         * @response `200` `PostingApiGetFboPostingListData` Список отправлений
+         * @response `400` `RpcStatus` Неверный параметр
+         * @response `403` `RpcStatus` Доступ запрещён
+         * @response `404` `RpcStatus` Ответ не найден
+         * @response `409` `RpcStatus` Конфликт запроса
+         * @response `500` `RpcStatus` Внутренняя ошибка сервера
+         */
+        
+        postingApiGetFboPostingList(data: Types.PostingGetFboPostingListRequest) {
+            const response = this.request<Types.PostingApiGetFboPostingListData>({
+                endpoint: `/v2/posting/fbo/list`,
+                method: 'POST',
+                payload: data,
+            });
+            return response;
+        }        
         /**
          * @description [Метод] для получения информации о ценах товара
          * в запросе вы можете передать максимум 1000 товаров.
